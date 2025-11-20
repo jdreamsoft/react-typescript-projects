@@ -1,0 +1,23 @@
+Overview
+We’ll be fetching data from the following resource: https://reqres.in/. They have some useful mock/testing APIs! Just a heads up: you’ll need to use their docs for some of the prompts below.
+Feel free to ask us, or Google, any questions! We want this to be a collaborative exercise. Please, If you’re using Google, or any other resources, give us a heads up.
+Feel free to pull in third-party libraries via import statements from https://skypack.dev.
+Have fun :-)
+Prompt 1
+Make a GET request to receive a delayed response from https://reqres.in/. We want to see how you handle loading states.
+If we’re NOT fetching any data, the div with an id loading-div should display the text: “not loading”.
+If we’re fetching data, the div with an id loading-div should display the text: “ loading”.
+Prompt 2
+Make a GET request to retrieve a list of users from https://reqres.in/.
+Render an image for each user returned from the API. The JSON response from the API contains a key avatar, this will be used for the image. Render ALL of the avatars in a div with the id users-div.
+Prompt 3
+Make a GET request to retrieve an unfound user from https://reqres.in/. We want to see how you handle error states.
+If the response has a status of 404 then we should render the error message, “oh no! no user was found”, in a div with the id error-div.
+Prompt 4
+Now let’s handle empty states! Let’s make sure we DON’T try to render any user avatars from prompt 2 if the response is 1) not an array type AND/OR 2) has a length of 0
+Prompt 5
+Now for CSS! Make all of the user avatars within the div with an id of users-div (prompt 2) centered both horizontally and vertically. A single column!
+Prompt 6
+Write JavaScript that will render “Hello World” in a div with the id hello-div on a delay, after 2000 milliseconds.
+Prompt 7
+Have each user’s avatar (from prompt 2) load on a 50ms delay, with each image loading one after another. For example: the first image loads after 50ms, the second image loads after 100ms, and the third image loads after 150ms.

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Avatars (React/JSX)</title>
+    <script src="https://unpkg.com/@babel/standalone@7.13.12/babel.min.js"></script>
+  </head>
+  <body></body>
+    <div id="root" class="container"></div>
+
+    <script type="text/jsx" data-type="module">
+      import React, {useState, useEffect} from 'https://cdn.skypack.dev/react@17';
+      import ReactDOM from 'https://cdn.skypack.dev/react-dom@17';
+      import axios from "https://cdn.skypack.dev/axios";
+      
+      const LoadingState = (props) => {
+        if (props != undefined && props.loadingText != undefined){
+          return <><div id="loading-div">{props.loadingText}</div></>;
+        } else {
+          return <></>
+        }
+      };
+      
+      const Users = (props) => {
+        const usersStyle = {
+          textAlign:"center",
+          verticalAlign:"middle"
+        };
+
+        if (props != undefined && props.usersData != undefined && props.usersData.data != undefined){
+          var userCount = props.userCount;
+          var res = [];
+          props.usersData.data.map((item, index) => {
+            if (index<userCount){
+              res.push(<div style={usersStyle}><img src={item.avatar}></img></div>);
+            }
+          })
+          return <><div id="users-div">{res}</div></>
+        } else {
+          return <></>;
+        }
+      }; 
+      
+      const ErrorState = (props) => {
+        return <><div id="error-div">{props.errorMessage}</div></>;
+      };
+      
+      const HelloWorld = () => {
+        return <div id="hello-div">Hello World</div>;
+      };
+
+      const App = () => {
+        const [loadingText, setLoadingText] = useState('');
+        const [usersData, setUsersData] = useState([]);
+        const [helloFlag, setHelloFlag] = useState(false);
+        const [errorMessage, setErrorMessage] = useState('');
+        const [userCount, setUserCount] = useState(0);
+        
+
+        useEffect(() => {
+          setTimeout(()=>{setHelloFlag(true)}, 2000);
+          setInterval(() => {
+            if (userCount < 100){
+              setUserCount(userCount => userCount + 1);
+            }
+          }, 500);
+          setLoadingText("loading");
+          axios.get("https://reqres.in/api/users").then((data) => {
+            if (data.data != undefined && data.data != null){
+              setUsersData(data.data);
+              setLoadingText("");
+            }
+          })
+          .catch((e) => {
+            setLoadingText("not loading");
+            if (e.response.status == 404){
+              setErrorMessage("oh no! no user was found");
+            }
+          })
+          }, []);
+        return (
+          <>
+            <LoadingState loadingText={loadingText} />
+            <Users usersData={usersData} userCount={userCount} />
+            {errorMessage != '' && <ErrorState errorMessage={errorMessage} />} 
+            {helloFlag && <HelloWorld />}
+          </>
+        );
+      };
+
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
