@@ -19,7 +19,7 @@ This project is Blog App that consist of vue + firebase.
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
-    apiKey: "AIzaSyAYC3L30c64yiNpb0wwDtM9bYNC08xSXI4",
+    apiKey: "xxxxxxxx",
     authDomain: "fireblogs-b4b83.firebaseapp.com",
     projectId: "fireblogs-b4b83",
     storageBucket: "fireblogs-b4b83.appspot.com",
@@ -39,7 +39,7 @@ This project is Blog App that consist of vue + firebase.
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
-        apiKey: "AIzaSyAYC3L30c64yiNpb0wwDtM9bYNC08xSXI4",
+        apiKey: "xxxxxx",
         authDomain: "fireblogs-b4b83.firebaseapp.com",
         projectId: "fireblogs-b4b83",
         storageBucket: "fireblogs-b4b83.appspot.com",
